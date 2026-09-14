@@ -1,5 +1,5 @@
 window.addEventListener('keydown', function(e) {
-    if (e.ctrlKey && e.key.toLowerCase() === 'e') {
+    if (e.ctrlKey && e.key.toLowerCase() === 't') {
         e.preventDefault();
         e.stopPropagation();
         browser.runtime.sendMessage({ action: "openTabliss" });

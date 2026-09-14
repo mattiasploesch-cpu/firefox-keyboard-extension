@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+  "name": "Keyboard Shortcuts for Android",
+  "version": "1.1",
+  "description": "Fügt Desktop-Tastenkombinationen wie Strg+T, Strg+R und Strg+W hinzu.",
+  "permissions": [
+    "tabs",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "applications": {
+    "gecko": {
+      "id": "keyboard-shortcuts-android@local.net",
+      "strict_min_version": "57.0"
+    }
+  }
+}

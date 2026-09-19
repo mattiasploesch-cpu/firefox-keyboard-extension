@@ -1,0 +1,28 @@
+name: Build and Deploy the zip
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: get newest repo
+        uses: actions/checkout@v4
+
+      - name: make script useable
+        run: chmod +x ./build.sh
+
+      - name: run build
+        run: ./build.sh
+
+      - name: create release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: Build ${{ github.run_number }}
+          files: |
+            *.xpi
